@@ -1,0 +1,46 @@
+/* --------------------- */
+/* NAV BAR               */
+/* --------------------- */
+
+nav {
+  background: var(--background-secondary);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--color-neutral-700);
+}
+.sidebar-button {
+  line-height: 1;
+  color: var(--color-zinc-500);
+}
+.project-button {
+  line-height: 1;
+  color: var(--color-neutral-500);
+}
+
+/* --------------------- */
+/* PANEL                 */
+/* --------------------- */
+
+.panel {
+  color: var(--color-white);
+  background: color-mix(in srgb, var(--background-secondary) 75%, transparent);
+  border: 2px solid var(--color-neutral-700);
+  border-radius: var(--radius-lg);
+}
+.panel-title {
+  background: color-mix(in srgb, var(--background-tertiary) 75%, transparent);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+/* --------------------- */
+/* BACKGROUND            */
+/* --------------------- */
+
+.bg-isometric {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.2;
+  background-color: var(--background-primary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='155.88' viewBox='0 0 90 155.88'%3E%3Cpath d='m45 0 45 25.98v51.96l-45 25.98L0 77.94V25.98zm0 103.92 45 25.98v51.96l-45 25.98-45-25.98v-51.96zm0-51.96L0 25.98m45 25.98 45-25.98m-45 25.98v51.96M0 0v24m90-24v27M45 155.88V105' stroke='%23fff' stroke-opacity='.3' fill='none'/%3E%3C/svg%3E");
+}

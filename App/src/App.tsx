@@ -4,7 +4,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 import Background from "./components/Background.tsx";
-import "./App.css";
+import "/src/styles/App.css";
 
 function App() {
   const [showSidebar, setSidebar] = useState(false);

@@ -34,7 +34,7 @@ function Panel({ className = "", tabs }: PanelProps) {
         })}
       </div>
       {/* Active Tab Content */}
-      <div className="p-4 flex-1 text-zinc-300 overflow-y-auto">
+      <div className="flex-1 text-zinc-300 overflow-y-auto">
         {activeTab ? activeTab.content : <div className="text-zinc-500">Eror 404: No content</div>}
       </div>
     </div>

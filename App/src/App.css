@@ -1,0 +1,22 @@
+/* --------------------- */
+/* NAV BAR               */
+/* --------------------- */
+
+nav {
+    background: var(--background-secondary);
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--color-neutral-700);
+}
+.sidebar-button {
+    line-height: 1;
+    color: var(--color-zinc-500);
+}
+.project-button {
+    line-height: 1;
+    color: var(--color-neutral-500);
+}
+/* --------------------- */
+/* SIDE BAR              */
+/* --------------------- */
+
+

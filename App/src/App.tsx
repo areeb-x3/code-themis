@@ -4,6 +4,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 import Background from "./components/Background.tsx";
+import Panel from "./components/Panel.tsx";
 import "/src/styles/App.css";
 
 function App() {
@@ -16,24 +17,30 @@ function App() {
       <Navbar onOpen={() => setSidebar(true)} />
       <Background />
       <div className="flex-col h-screen grid grid-cols-3 p-6 gap-4 ">
-        <div className="col-span-2 panel">
-          <div className="panel-title p-1">AAAA</div>
-          <div className="p-4">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse, eum
-            quaerat, vitae itaque vel rem, assumenda quibusdam aut magnam
-            necessitatibus numquam consequatur dolores magni facere quia sed
-            deleniti velit? Placeat?
-          </div>
-        </div>
-        <div className="grow panel">
-          <div className="panel-title p-1">AAAA</div>
-          <div className="p-4">
+        <Panel
+          className="col-span-2"
+          title="AAAA"
+          content={
+            <div>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse,
+              eum quaerat, vitae itaque vel rem, assumenda quibusdam aut magnam
+              necessitatibus numquam consequatur dolores magni facere quia sed
+              deleniti velit? Placeat?
+            </div>
+          }
+        />
+        <Panel
+          className="grow"
+          title="AAAA"
+          content={
+            <div>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores
             amet nihil repellat harum nisi quasi eligendi consequuntur
             dignissimos totam. Facere rerum atque fugiat molestiae culpa saepe
             quis eos omnis est?
           </div>
-        </div>
+          }
+        />
       </div>
     </div>
   );

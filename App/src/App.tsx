@@ -80,7 +80,11 @@ function Navbar({ onOpen }: NavbarProps) {
       </div>
       <div className="">Centre Title</div>
       <div>
-        <a href="https://github.com/areeb-x3/code-themis">
+        <a
+          target="_blank" 
+          href="https://github.com/areeb-x3/code-themis"
+          rel="noopener noreferrer"
+        >
         <button className="flex gap-3 project-button border-2 border-neutral-700 p-1 rounded-md">
           <FontAwesomeIcon icon={faGithub} />
           Github

@@ -30,6 +30,17 @@ nav {
   background: color-mix(in srgb, var(--background-tertiary) 75%, transparent);
   border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
+.panel-tabs {
+  color: var(--color-neutral-400);
+  background: var(--background-tertiary);
+  border-bottom: 1px var(--color-neutral-700);
+}
+
+.tab-bar {
+  color: var(--color-neutral-400);
+  border: 1px solid var(--color-neutral-700);
+  border-radius: var(--radius-lg);
+}
 
 /* --------------------- */
 /* BACKGROUND            */

@@ -4,8 +4,7 @@
 :root {
     --background-primary: var(--color-black);
     --background-secondary: var(--color-neutral-950);
-    --background-tertiary: var(--color-neutral-600);
-
+    --background-tertiary: var(--color-neutral-800);
     --text-primary: var(--color-white);
 }
 
@@ -16,4 +15,5 @@
 body {
     background-color: var(--background-primary);
     color: var(--text-primary);
+    user-select: none;
 }

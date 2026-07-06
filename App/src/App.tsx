@@ -15,7 +15,26 @@ function App() {
 
       <Navbar onOpen={() => setSidebar(true)} />
       <Background />
-      <div className="p-4 text-white"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, aliquam consequatur? Ducimus, iusto cum facere veniam unde dicta consequuntur, doloremque voluptas assumenda debitis officia eum nihil veritatis perspiciatis perferendis modi.</div>
+      <div className="flex-col h-screen grid grid-cols-3 p-6 gap-4 ">
+        <div className="col-span-2 panel">
+          <div className="panel-title p-1">AAAA</div>
+          <div className="p-4">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse, eum
+            quaerat, vitae itaque vel rem, assumenda quibusdam aut magnam
+            necessitatibus numquam consequatur dolores magni facere quia sed
+            deleniti velit? Placeat?
+          </div>
+        </div>
+        <div className="grow panel">
+          <div className="panel-title p-1">AAAA</div>
+          <div className="p-4">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores
+            amet nihil repellat harum nisi quasi eligendi consequuntur
+            dignissimos totam. Facere rerum atque fugiat molestiae culpa saepe
+            quis eos omnis est?
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -81,14 +100,14 @@ function Navbar({ onOpen }: NavbarProps) {
       <div className="">Centre Title</div>
       <div>
         <a
-          target="_blank" 
+          target="_blank"
           href="https://github.com/areeb-x3/code-themis"
           rel="noopener noreferrer"
         >
-        <button className="flex gap-3 project-button border-2 border-neutral-700 p-1 rounded-md">
-          <FontAwesomeIcon icon={faGithub} />
-          Github
-        </button>
+          <button className="flex gap-3 project-button border-2 border-neutral-700 p-1 rounded-md">
+            <FontAwesomeIcon icon={faGithub} />
+            Github
+          </button>
         </a>
       </div>
     </nav>

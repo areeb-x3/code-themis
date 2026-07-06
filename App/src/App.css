@@ -15,8 +15,17 @@ nav {
     line-height: 1;
     color: var(--color-neutral-500);
 }
-/* --------------------- */
-/* SIDE BAR              */
-/* --------------------- */
 
-
+/* --------------------- */
+/* APP CONTAINER         */
+/* --------------------- */
+.panel {
+    color: var(--color-white);
+    background: color-mix(in srgb, var(--background-secondary) 75%, transparent);
+    border: 2px solid var(--color-neutral-700);
+    border-radius: var(--radius-lg);
+}
+.panel-title {
+    background: color-mix(in srgb, var(--background-tertiary) 75%, transparent);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+}

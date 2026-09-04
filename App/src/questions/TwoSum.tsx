@@ -120,138 +120,140 @@ export function StructureInspector({ state, onPlay }: StructureInspectorProps) {
       </div>
 
       {/* Visualising Space: Left ARRAY, Right HASH MAP */}
-      <div className="flex-1 grid grid-cols-1 md:grid-cols-2 p-4 gap-4 overflow-hidden">
-        {/* LEFT: ARRAY */}
-        <div className="flex flex-col h-full overflow-hidden">
-          <div className="flex items-center gap-2 mb-2 shrink-0 self-start">
-            <FontAwesomeIcon icon={faHashtag} className="w-3.5 h-3.5 text-neutral-400" />
-            <h3 className="font-semibold text-neutral-200 text-xs uppercase tracking-wider">
-              ARRAY
-            </h3>
-            <span className="text-[11px] text-neutral-400 font-mono bg-neutral-900 px-2 py-0.5 rounded border border-neutral-800">
-              Length: {nums.length}
-            </span>
-          </div>
+      <div className="flex-1 overflow-auto p-4 min-h-0 min-w-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full min-w-[500px]">
+          {/* LEFT: ARRAY */}
+          <div className="flex flex-col h-full overflow-hidden min-w-0">
+            <div className="flex items-center gap-2 mb-2 shrink-0 self-start">
+              <FontAwesomeIcon icon={faHashtag} className="w-3.5 h-3.5 text-neutral-400" />
+              <h3 className="font-semibold text-neutral-200 text-xs uppercase tracking-wider">
+                ARRAY
+              </h3>
+              <span className="text-[11px] text-neutral-400 font-mono bg-neutral-900 px-2 py-0.5 rounded border border-neutral-800">
+                Length: {nums.length}
+              </span>
+            </div>
 
-          <div className="flex-1 flex flex-wrap gap-3 items-center justify-center content-center overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {nums.map((num, index) => {
-              const isCurrent =
-                currentTrace.currentIndex === index &&
-                currentTrace.type !== "end";
-              const isSolution =
-                currentTrace.solution &&
-                currentTrace.solution.includes(index);
-              const isVisited =
-                currentTrace.currentIndex > index ||
-                (currentTrace.currentIndex === index &&
-                  (currentTrace.type === "add" || currentTrace.type === "found"));
+            <div className="flex-1 flex flex-wrap gap-3 items-center justify-center content-center overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {nums.map((num, index) => {
+                const isCurrent =
+                  currentTrace.currentIndex === index &&
+                  currentTrace.type !== "end";
+                const isSolution =
+                  currentTrace.solution &&
+                  currentTrace.solution.includes(index);
+                const isVisited =
+                  currentTrace.currentIndex > index ||
+                  (currentTrace.currentIndex === index &&
+                    (currentTrace.type === "add" || currentTrace.type === "found"));
 
-              return (
-                <div key={index} className="flex flex-col items-center">
-                  {/* Fixed box size, constant border-2, NO scale transforms */}
-                  <div
-                    className={`w-14 h-14 flex items-center justify-center font-bold text-lg border-2 transition-colors duration-200 font-mono relative ${
-                      isSolution
-                        ? "bg-emerald-950/40 border-emerald-500 text-emerald-300 ring-2 ring-emerald-500/30 shadow-md shadow-emerald-500/10"
-                        : isCurrent
-                          ? "bg-amber-950/40 border-amber-400 text-amber-200 ring-2 ring-amber-400/30 shadow-md shadow-amber-500/10"
-                          : isVisited
-                            ? "bg-neutral-900 border-neutral-700 text-neutral-300 opacity-90"
-                            : "bg-neutral-950 border-neutral-800 text-neutral-500"
-                    }`}
-                    style={elementBoxRadius}
-                  >
-                    {num}
-                    {isSolution && (
-                      <div className="absolute -top-1.5 -right-1.5 bg-emerald-500 text-neutral-950 rounded-full w-4 h-4 flex items-center justify-center text-[9px] border border-neutral-950 shadow-md">
-                        <FontAwesomeIcon icon={faCheck} className="stroke-[3]" />
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Fixed-height label slot so element blocks stay at the exact same place */}
-                  <div className="mt-1.5 h-10 flex flex-col items-center justify-start">
-                    <span className="text-[10px] text-neutral-500 font-mono leading-tight">
-                      i = {index}
-                    </span>
-                    {/* Match pointer */}
-                    {isSolution && (
-                      <span className="text-[10px] text-emerald-400 font-semibold leading-tight">
-                        Match
-                      </span>
-                    )}
-                    {/* Current pointer: below match */}
-                    {isCurrent && (
-                      <span className="text-[10px] text-amber-400 font-semibold leading-tight">
-                        Current
-                      </span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* RIGHT: HASH MAP (No slider/scrollbar bug) */}
-        <div className="flex flex-col h-full overflow-hidden border-t md:border-t-0 md:border-l border-neutral-800/60 pt-4 md:pt-0 md:pl-4">
-          <div className="flex items-center gap-2 mb-2 shrink-0 self-start">
-            <FontAwesomeIcon icon={faTable} className="w-3.5 h-3.5 text-neutral-400" />
-            <h3 className="font-semibold text-neutral-200 text-xs uppercase tracking-wider">
-              HASH MAP
-            </h3>
-            <span className="text-[11px] text-neutral-400 font-mono bg-neutral-900 px-2 py-0.5 rounded border border-neutral-800">
-              Entries: {Object.keys(currentTrace.hashMap).length}
-            </span>
-          </div>
-
-          <div className="flex-1 flex flex-col items-center justify-center [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {Object.keys(currentTrace.hashMap).length === 0 ? (
-              <div className="flex flex-col items-center justify-center p-6 text-neutral-500 gap-2">
-                <FontAwesomeIcon icon={faTable} className="text-xl text-neutral-600" />
-                <p className="text-xs text-neutral-500 font-mono">HashMap is empty</p>
-              </div>
-            ) : (
-              <div className="w-full max-w-xs flex flex-col gap-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                {/* Table Headers */}
-                <div className="grid grid-cols-2 text-[11px] font-mono text-neutral-400 uppercase tracking-wider px-3">
-                  <span className="text-center font-medium">Key</span>
-                  <span className="text-center font-medium">Value</span>
-                </div>
-
-                {/* Combined single table box per entry with same border radius styling */}
-                <div className="flex flex-col gap-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                  {Object.entries(currentTrace.hashMap).map(([key, val]) => {
-                    const isComplementHighlight =
-                      currentTrace.complement !== null &&
-                      currentTrace.complement === Number(key);
-
-                    return (
-                      <div
-                        key={key}
-                        className={`grid grid-cols-2 text-center text-sm font-mono font-bold border transition-all ${
-                          isComplementHighlight
-                            ? "bg-emerald-950/40 border-2 border-emerald-500 text-emerald-300 ring-2 ring-emerald-500/30 scale-[1.02] shadow-sm"
-                            : "bg-neutral-900 border border-neutral-700 text-neutral-100"
-                        }`}
-                        style={elementBoxRadius}
-                      >
-                        <div className="py-2 px-3 border-r border-neutral-700/60">
-                          {key}
+                return (
+                  <div key={index} className="flex flex-col items-center">
+                    {/* Fixed box size, constant border-2, NO scale transforms */}
+                    <div
+                      className={`w-14 h-14 flex items-center justify-center font-bold text-lg border-2 transition-colors duration-200 font-mono relative ${
+                        isSolution
+                          ? "bg-emerald-950/40 border-emerald-500 text-emerald-300 ring-2 ring-emerald-500/30 shadow-md shadow-emerald-500/10"
+                          : isCurrent
+                            ? "bg-amber-950/40 border-amber-400 text-amber-200 ring-2 ring-amber-400/30 shadow-md shadow-amber-500/10"
+                            : isVisited
+                              ? "bg-neutral-900 border-neutral-700 text-neutral-300 opacity-90"
+                              : "bg-neutral-950 border-neutral-800 text-neutral-500"
+                      }`}
+                      style={elementBoxRadius}
+                    >
+                      {num}
+                      {isSolution && (
+                        <div className="absolute -top-1.5 -right-1.5 bg-emerald-500 text-neutral-950 rounded-full w-4 h-4 flex items-center justify-center text-[9px] border border-neutral-950 shadow-md">
+                          <FontAwesomeIcon icon={faCheck} className="stroke-[3]" />
                         </div>
+                      )}
+                    </div>
+
+                    {/* Fixed-height label slot so element blocks stay at the exact same place */}
+                    <div className="mt-1.5 h-10 flex flex-col items-center justify-start">
+                      <span className="text-[10px] text-neutral-500 font-mono leading-tight">
+                        i = {index}
+                      </span>
+                      {/* Match pointer */}
+                      {isSolution && (
+                        <span className="text-[10px] text-emerald-400 font-semibold leading-tight">
+                          Match
+                        </span>
+                      )}
+                      {/* Current pointer: below match */}
+                      {isCurrent && (
+                        <span className="text-[10px] text-amber-400 font-semibold leading-tight">
+                          Current
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* RIGHT: HASH MAP (No slider/scrollbar bug) */}
+          <div className="flex flex-col h-full overflow-hidden border-t md:border-t-0 md:border-l border-neutral-800/60 pt-4 md:pt-0 md:pl-4 min-w-0">
+            <div className="flex items-center gap-2 mb-2 shrink-0 self-start">
+              <FontAwesomeIcon icon={faTable} className="w-3.5 h-3.5 text-neutral-400" />
+              <h3 className="font-semibold text-neutral-200 text-xs uppercase tracking-wider">
+                HASH MAP
+              </h3>
+              <span className="text-[11px] text-neutral-400 font-mono bg-neutral-900 px-2 py-0.5 rounded border border-neutral-800">
+                Entries: {Object.keys(currentTrace.hashMap).length}
+              </span>
+            </div>
+
+            <div className="flex-1 flex flex-col items-center justify-center [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {Object.keys(currentTrace.hashMap).length === 0 ? (
+                <div className="flex flex-col items-center justify-center p-6 text-neutral-500 gap-2">
+                  <FontAwesomeIcon icon={faTable} className="text-xl text-neutral-600" />
+                  <p className="text-xs text-neutral-500 font-mono">HashMap is empty</p>
+                </div>
+              ) : (
+                <div className="w-full max-w-xs flex flex-col gap-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                  {/* Table Headers */}
+                  <div className="grid grid-cols-2 text-[11px] font-mono text-neutral-400 uppercase tracking-wider px-3">
+                    <span className="text-center font-medium">Key</span>
+                    <span className="text-center font-medium">Value</span>
+                  </div>
+
+                  {/* Combined single table box per entry with same border radius styling */}
+                  <div className="flex flex-col gap-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                    {Object.entries(currentTrace.hashMap).map(([key, val]) => {
+                      const isComplementHighlight =
+                        currentTrace.complement !== null &&
+                        currentTrace.complement === Number(key);
+
+                      return (
                         <div
-                          className={`py-2 px-3 ${
-                            isComplementHighlight ? "text-emerald-300" : "text-neutral-300"
+                          key={key}
+                          className={`grid grid-cols-2 text-center text-sm font-mono font-bold border transition-all ${
+                            isComplementHighlight
+                              ? "bg-emerald-950/40 border-2 border-emerald-500 text-emerald-300 ring-2 ring-emerald-500/30 scale-[1.02] shadow-sm"
+                              : "bg-neutral-900 border border-neutral-700 text-neutral-100"
                           }`}
+                          style={elementBoxRadius}
                         >
-                          {val}
+                          <div className="py-2 px-3 border-r border-neutral-700/60">
+                            {key}
+                          </div>
+                          <div
+                            className={`py-2 px-3 ${
+                              isComplementHighlight ? "text-emerald-300" : "text-neutral-300"
+                            }`}
+                          >
+                            {val}
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -300,7 +302,7 @@ export function TraceExecution({ state }: { state: TwoSumState }) {
           return (
             <div
               key={code.line}
-              className={`w-full py-0.5 flex items-center transition-colors duration-75 relative z-10 ${
+              className={`w-full min-w-max py-0.5 flex items-center transition-colors duration-75 relative z-10 ${
                 isActive ? "bg-neutral-800/90" : "hover:bg-neutral-800/30"
               }`}
             >
@@ -362,7 +364,7 @@ export function TestCaseTab({ state }: { state: TwoSumState }) {
   const rawTargetValue = currentCase.rawTarget ?? String(currentCase.target);
 
   return (
-    <div className="p-4 flex flex-col gap-4">
+    <div className="flex-1 min-h-0 overflow-auto p-4 flex flex-col gap-4">
       {/* Case Navigation Tabs - wraps into rows when overflowing */}
       <div className="flex flex-wrap items-center gap-2 pt-1">
         {testCases.map((_, index) => {

@@ -33,14 +33,14 @@ function Panel({
   return (
     <div className={`panel tab-bar flex flex-col overflow-hidden ${className}`}>
       {/* Tab Bar */}
-      <div className="panel-tabs flex items-center p-1 gap-1">
+      <div className="panel-tabs flex items-center p-1 gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden shrink-0">
         {tabs.map((tab) => {
           const isActive = tab.id === activeTabId;
           return (
             <button
               key={tab.id}
               onClick={() => handleTabClick(tab.id)}
-              className={`px-3.5 py-1.5 font-medium outline-none cursor-pointer bg-transparent ${
+              className={`px-3.5 py-1.5 font-medium outline-none cursor-pointer bg-transparent shrink-0 ${
                 isActive
                   ? "text-white text-sm font-semibold"
                   : "hover:text-zinc-200 text-xs text-neutral-400"
@@ -53,7 +53,7 @@ function Panel({
         })}
       </div>
       {/* Active Tab Content */}
-      <div className="flex-1 text-zinc-300 overflow-y-auto flex flex-col">
+      <div className="flex-1 text-zinc-300 overflow-auto flex flex-col min-h-0 min-w-0">
         {activeTab ? activeTab.content : <div className="text-zinc-500">Eror 404: No content</div>}
       </div>
     </div>

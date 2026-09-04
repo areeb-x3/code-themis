@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -12,8 +12,45 @@
     font-family: "Exo", sans-serif;
 }
 
+.font-jetbrains,
+.font-jetbrains * {
+    font-family: "JetBrains Mono", monospace !important;
+}
+
 body {
     background-color: var(--background-primary);
     color: var(--text-primary);
     user-select: none;
+}
+
+/* Global Dark Scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #525252 transparent;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #525252;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d4d4d4;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #ffffff;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
 }

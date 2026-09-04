@@ -4,9 +4,10 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 interface NavbarProps {
   onOpen: () => void;
+  title?: string;
 }
 
-function Navbar({ onOpen }: NavbarProps) {
+function Navbar({ onOpen, title = "Two Sum" }: NavbarProps) {
   return (
     <nav className="flex items-center justify-between text-xl p-4 min-h-16">
       <div className="flex items-center gap-3">
@@ -18,7 +19,7 @@ function Navbar({ onOpen }: NavbarProps) {
         </button>
         <h1 className="font-bold">Themis</h1>
       </div>
-      <div className="">Centre Title</div>
+      <div className="text-base font-semibold text-neutral-200">{title}</div>
       <div>
         <a
           target="_blank"

@@ -106,3 +106,18 @@ export const DEFAULT_CANVAS_OPTIONS: Required<CanvasOptions> = {
   snapToGrid: false,
   readOnly: false,
 };
+
+export interface SpeedOption {
+  label: string;
+  value: number;
+}
+
+export const DEFAULT_SPEED_OPTIONS: SpeedOption[] = [
+  { label: "0.5x", value: 2000 },
+  { label: "0.75x", value: 1333 },
+  { label: "1.0x", value: 1000 },
+  { label: "1.25x", value: 800 },
+  { label: "1.5x", value: 667 },
+  { label: "2.0x", value: 500 },
+];
+

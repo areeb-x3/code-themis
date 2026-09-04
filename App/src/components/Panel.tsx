@@ -51,7 +51,12 @@ function Panel({
               style={{ borderRadius: "5px" }}
             >
               {tab.icon && (
-                <FontAwesomeIcon icon={tab.icon} className="w-3.5 h-3.5 text-white" />
+                <FontAwesomeIcon
+                  icon={tab.icon}
+                  className={`w-3.5 h-3.5 transition-colors ${
+                    isActive ? "text-white" : "text-neutral-400"
+                  }`}
+                />
               )}
               <span>{tab.title}</span>
             </button>

@@ -139,7 +139,7 @@ function Sidebar({
                 const isDiffActive =
                   selectedDifficulty === diff ||
                   (diff === "Med." && selectedDifficulty === "Medium");
-                let activeClass = "bg-neutral-700 text-white";
+                const activeClass = "bg-neutral-700 text-white";
 
                 return (
                   <button

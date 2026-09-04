@@ -1,3 +1,2 @@
-export * from "./TwoSumState.ts";
-export * from "./TwoSum.tsx";
-export { default } from "./TwoSum.tsx";
+export * from "./two-sum/two-sum";
+export { default } from "./two-sum/two-sum";

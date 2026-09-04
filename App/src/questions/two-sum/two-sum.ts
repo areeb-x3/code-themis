@@ -1,5 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
 
+/* =========================================================================
+   TYPES & INTERFACES
+   ========================================================================= */
+
 export interface TestCase {
   nums: number[];
   target: number;
@@ -17,7 +21,13 @@ export interface TraceStep {
   action: string;
 }
 
-export type TokenType = "keyword" | "type" | "method" | "variable" | "number" | "operator";
+export type TokenType =
+  | "keyword"
+  | "type"
+  | "method"
+  | "variable"
+  | "number"
+  | "operator";
 
 export interface CodeToken {
   text: string;
@@ -29,6 +39,10 @@ export interface CodeLine {
   indent: number;
   tokens: CodeToken[];
 }
+
+/* =========================================================================
+   JAVA CODE SNIPPET (Monokai Theme)
+   ========================================================================= */
 
 export const JAVA_CODE_SNIPPET: CodeLine[] = [
   {
@@ -204,6 +218,10 @@ export const JAVA_CODE_SNIPPET: CodeLine[] = [
 
 export const CODE_SNIPPET = JAVA_CODE_SNIPPET;
 
+/* =========================================================================
+   TWO SUM STATE HOOK
+   ========================================================================= */
+
 export function useTwoSum() {
   const [testCases, setTestCases] = useState<TestCase[]>([
     { nums: [2, 7, 11, 15], target: 9, rawNums: "[2, 7, 11, 15]", rawTarget: "9" },
@@ -248,6 +266,7 @@ export function useTwoSum() {
     });
 
     const map: Record<number, number> = {};
+
     for (let i = 0; i < nums.length; i++) {
       const currentVal = nums[i];
       const comp = target - currentVal;
@@ -404,10 +423,10 @@ export function useTwoSum() {
       activeCaseIndex >= nextCases.length
         ? nextCases.length - 1
         : activeCaseIndex === index
-          ? Math.max(0, index - 1)
-          : activeCaseIndex > index
-            ? activeCaseIndex - 1
-            : activeCaseIndex;
+        ? Math.max(0, index - 1)
+        : activeCaseIndex > index
+        ? activeCaseIndex - 1
+        : activeCaseIndex;
 
     setTestCases(nextCases);
     setActiveCaseIndex(newActiveIndex);
@@ -492,3 +511,10 @@ export function useTwoSum() {
 }
 
 export type TwoSumState = ReturnType<typeof useTwoSum>;
+
+/* =========================================================================
+   RE-EXPORT COMPONENTS
+   ========================================================================= */
+
+export * from "./TwoSum";
+export { default } from "./TwoSum";

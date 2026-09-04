@@ -5,13 +5,19 @@ import Navbar from "./components/Navbar.tsx";
 import Sidebar from "./components/Sidebar.tsx";
 import Panel from "./components/Panel.tsx";
 
-import "/src/styles/App.css";
-import { useTwoSum } from "./questions/TwoSumState.ts";
 import {
+  faCube,
+  faCode,
+  faTerminal,
+} from "@fortawesome/free-solid-svg-icons";
+
+import "/src/styles/App.css";
+import {
+  useTwoSum,
   StructureInspector,
   TraceExecution,
   TestCaseTab,
-} from "./questions/TwoSum.tsx";
+} from "./questions/two-sum/two-sum";
 
 function App() {
   const [showSidebar, setSidebar] = useState(false);
@@ -88,6 +94,7 @@ function App() {
     {
       id: "inspector",
       title: "Structure Inspector",
+      icon: faCube,
       content: (
         <StructureInspector
           state={twoSumState}
@@ -101,11 +108,13 @@ function App() {
     {
       id: "code",
       title: "Code",
+      icon: faCode,
       content: <TraceExecution state={twoSumState} />,
     },
     {
       id: "testcase",
       title: "Test Case",
+      icon: faTerminal,
       content: <TestCaseTab state={twoSumState} />,
     },
   ];

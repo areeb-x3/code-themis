@@ -1,12 +1,15 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
-interface Tab {
+export interface Tab {
   id: string;
   title: string;
   content: React.ReactNode;
+  icon?: IconDefinition;
 }
-interface PanelProps {
+
+export interface PanelProps {
   className?: string;
   tabs: Tab[];
   activeTabId?: string;
@@ -40,14 +43,17 @@ function Panel({
             <button
               key={tab.id}
               onClick={() => handleTabClick(tab.id)}
-              className={`px-3.5 py-1.5 font-medium outline-none cursor-pointer bg-transparent shrink-0 ${
+              className={`px-3.5 py-1.5 font-medium outline-none cursor-pointer bg-transparent shrink-0 flex items-center gap-2 ${
                 isActive
                   ? "text-white text-sm font-semibold"
                   : "hover:text-zinc-200 text-xs text-neutral-400"
               }`}
               style={{ borderRadius: "5px" }}
             >
-              {tab.title}
+              {tab.icon && (
+                <FontAwesomeIcon icon={tab.icon} className="w-3.5 h-3.5 text-white" />
+              )}
+              <span>{tab.title}</span>
             </button>
           );
         })}

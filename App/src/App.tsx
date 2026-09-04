@@ -112,7 +112,16 @@ function App() {
 
   return (
     <div className="h-screen flex flex-col overflow-hidden">
-      <Sidebar isOpen={showSidebar} onClose={() => setSidebar(false)} />
+      <Sidebar
+        isOpen={showSidebar}
+        onClose={() => setSidebar(false)}
+        activeProblemId={1}
+        onSelectProblem={(id) => {
+          if (id !== 1) {
+            alert(`Placeholder ${id} is not yet implemented.`);
+          }
+        }}
+      />
       <Navbar onOpen={() => setSidebar(true)} title="Two Sum - LeetCode #1" />
       <Background />
 

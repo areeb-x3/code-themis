@@ -67,7 +67,7 @@ export const VisualizerTopBar: React.FC<VisualizerTopBarProps> = ({
 
   return (
     <div
-      className={`flex items-center justify-between p-0 px-2 h-9 border-b border-neutral-800 bg-neutral-900 shrink-0 select-none relative z-30 overflow-visible ${className}`}
+      className={`flex items-center justify-between p-0 px-2 h-9 border-b border-neutral-800 bg-neutral-900 shrink-0 select-none relative z-10 overflow-visible ${className}`}
     >
       {/* Playback Controls (Previous, Play, Next, Reset) */}
       <div className="flex items-center gap-1">

@@ -25,7 +25,7 @@ export const ControlsOverlay: React.FC<ControlsOverlayProps> = ({
   const percentage = Math.round(scale * 100);
 
   return (
-    <div className="absolute bottom-4 right-4 z-30 flex items-center gap-1 px-2 py-1.5 rounded-xl bg-neutral-900/80 backdrop-blur-md border border-neutral-800/80 shadow-2xl select-none">
+    <div className="absolute bottom-4 right-4 z-10 flex items-center gap-1 px-2 py-1.5 rounded-md bg-neutral-900 border border-neutral-800/80 shadow-2xl select-none">
       {/* Zoom Out */}
       <button
         type="button"
